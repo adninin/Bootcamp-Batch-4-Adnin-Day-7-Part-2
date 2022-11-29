@@ -1,9 +1,7 @@
 const { command, parse } = require("yargs");
 const yargs = require("yargs");
 const yargsParser = require("yargs-parser");
-
-//Require atau import FileSync//
-const fs = require('fs');
+const app1 = require ("./app1")
 
 yargs.command({
     command:'add',
@@ -35,12 +33,7 @@ yargs.command({
             email:argv.email,
             mobile:argv.mobile,
         };
-
-        const file = fs.readFileSync('data/contact.json', 'utf-8');
-        const contacts = JSON.parse(file);
-        contacts.push(contact);
-        fs.writeFileSync('data/contact.json', JSON.stringify(contacts));
-
+        app1.save(argv.name,argv.email,argv.mobile)
 
         console.log(contact);
 
